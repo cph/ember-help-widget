@@ -1,0 +1,73 @@
+<div class="ember-help-widget-chat-message {{this.messageClass}}">
+  {{#if this.isStatus}}
+    {{@message.text}}
+    {{#if @message.isRatingRequest}}
+      <div class="ember-help-widget-chat-status-buttons">
+        <button
+          type="button"
+          class="btn btn-default {{if (eq this.zendeskChat.rating "bad") "ember-help-widget-inactive"}}"
+          disabled={{not this.zendeskChat.isOnline}}
+          title={{t "ember-help-widget.chat.rate-good"}}
+          {{on "click" (fn @onRate "good")}}
+          ><HelpWidget::Icon @name="thumbs-up" /> {{t "ember-help-widget.chat.rate-good"}}</button>
+        <button
+          type="button"
+          class="btn btn-default {{if (eq this.zendeskChat.rating "good") "ember-help-widget-inactive"}}"
+          disabled={{not this.zendeskChat.isOnline}}
+          title={{t "ember-help-widget.chat.rate-bad"}}
+          {{on "click" (fn @onRate "bad")}}
+          ><HelpWidget::Icon @name="thumbs-down" /> {{t "ember-help-widget.chat.rate-bad"}}</button>
+      </div>
+      {{#if this.zendeskChat.rating}}
+        {{#if this.zendeskChat.comments}}
+          <div class="ember-help-widget-chat-status-buttons">
+            <span>{{t "ember-help-widget.chat.feedback-thanks"}}</span>
+          </div>
+        {{else}}
+          <div class="ember-help-widget-chat-status-buttons">
+            <Textarea
+              class="ember-help-widget-chat-feedback-form"
+              placeholder={{t "ember-help-widget.chat.feedback-placeholder"}}
+              @value={{this.tentativeFeedback}}
+              @disabled={{not this.zendeskChat.isOnline}}
+              @enter={{this.submitFeedback}}
+              @change={{this.submitFeedback}} />
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  {{else}}
+    {{#if this.showDisplayName}}
+      <div class="ember-help-widget-chat-speaker">
+        {{#if this.speaker.avatarUrl}}
+          <img src={{this.speaker.avatarUrl}} alt={{@message.displayName}}>
+        {{/if}}
+        <div class="ember-help-widget-chat-speaker-name">
+          <div class="ember-help-widget-chat-display-name">{{@message.displayName}}</div>
+          {{#if this.speaker.title}}
+            <div class="ember-help-widget-chat-speaker-title">{{this.speaker.title}}</div>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    <div class="ember-help-widget-chat-bubble-container">
+      {{#if this.isVisitor}}<div class="ember-help-widget-chat-spacer"></div>{{/if}}
+
+      {{#if @message.hasFile}}
+        <div class="ember-help-widget-chat-bubble ember-help-widget-clear-bubble" title={{this.formattedTimestamp}}>
+          {{#if @message.isImage}}
+            <a href={{@message.fileUrl}} title={{@message.fileName}} class="ember-help-widget-chat-attachment-image" target="_blank" rel="noopener noreferrer">
+              <img src={{@message.fileUrl}} alt={{@message.fileName}}>
+            </a>
+          {{/if}}
+          <a href={{@message.fileUrl}} title={{@message.fileName}} class="ember-help-widget-chat-attachment-link" target="_blank" rel="noopener noreferrer">{{@message.fileName}} ({{@message.fileSize}})</a>
+        </div>
+      {{else}}
+        <div class="ember-help-widget-chat-bubble" title={{this.formattedTimestamp}}>{{@message.text}}</div>
+      {{/if}}
+
+      {{#if this.isAgent}}<div class="ember-help-widget-chat-spacer"></div>{{/if}}
+    </div>
+  {{/if}}
+</div>

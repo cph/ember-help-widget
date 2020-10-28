@@ -1,0 +1,33 @@
+{{#if @isShowing}}
+  <div
+    class="ember-help-widget-feedback-view"
+    {{did-insert this.autofocus}}
+  >
+    <Input
+      @id="__help_widget_feedback_subject"
+      @type="text"
+      @value={{this.subject}}
+      placeholder={{t "ember-help-widget.feedback.subject-placeholder"}} />
+    <Textarea
+      @id="__help_widget_feedback_message"
+      @value={{this.message}}
+      placeholder={{t "ember-help-widget.feedback.body-placeholder"}} />
+
+    <div class="ember-help-widget-feedback-options">
+      <div>
+        <label for="__help_widget_feedback_priority">{{t "ember-help-widget.feedback.priority.label"}}</label>
+        <PowerSelect
+            @triggerId="__help_widget_feedback_priority"
+            @options={{this.priorities}}
+            @selected={{this.selectedPriority}}
+            @searchEnabled={{false}}
+            @onChange={{this.setPriority}} as |priority|>
+          {{t (concat "ember-help-widget.feedback.priority." priority)}}
+        </PowerSelect>
+      </div>
+      <button disabled={{this.sendDisabled}} class="btn btn-primary" type="button" {{on "click" this.send}}>
+        {{t "ember-help-widget.feedback.send"}}
+      </button>
+    </div>
+  </div>
+{{/if}}

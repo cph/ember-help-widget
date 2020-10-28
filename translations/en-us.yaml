@@ -1,0 +1,50 @@
+ember-help-widget:
+  or: or
+  default-header: Help center
+  help-center-url: https://google.com
+  contact-phone-number: (555) 555-5555
+  help:
+    link: "&#8249; Back"
+    search-placeholder: Search help articles
+    search-results: Search Results
+    suggestions: Suggested Articles
+    no-results: No Results
+    help-center: Or visit our '<'a href="{url}" target="_blank" rel="noopener noreferrer"'>'online help center'</a>'
+  feedback:
+    link: Send us a message
+    alt-contact: You can also call us at '<strong>'{phone}'</strong>' or visit our '<'a href="{url}" target="_blank" rel="noopener noreferrer"'>'online help center'</a>'
+    subject-placeholder: Subject
+    body-placeholder: "Please answer: What were you trying to accomplish? What is actually happening?"
+    priority:
+      label: Priority
+      low: Low
+      normal: Normal
+      high: High
+      urgent: Urgent
+    send: Send
+  chat:
+    link-start: Start a chat
+    link: Chat
+    title: Chat
+    message-placeholder: Type a message
+    joined: "{name} joined the chat"
+    left: "{name} left the chat"
+    rating-request: Please rate your interaction with {name} 
+    added-rating: "{name} rated the chat {rating}"
+    removed-rating: "{name} removed the rating"
+    commented: "{name} commented on the chat"
+    send-file: Send a file
+    leave: End chat
+    typing: "{name} is typing..."
+    queued: You are in the queue at position {position}
+    offline: No one is currently available for chat; send us a message, and we''ll get back to you soon.
+    rate-good: Good
+    rate-bad: Bad
+    add-feedback: Add feedback
+    edit-feedback: Edit feedback
+    feedback-placeholder: Anything else you''d like to add?
+    feedback-thanks: Thanks for the feedback
+  file:
+    upload: Upload
+    uploading: Uploading...
+

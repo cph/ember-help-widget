@@ -1,0 +1,32 @@
+{{#if @isShowing}}
+  <div
+    class="ember-help-widget-help-view"
+    {{did-insert this.fetchSuggestions}}
+    {{did-insert this.autofocus}}
+    {{did-update this.fetchSuggestions @viewName}}
+  >
+    <Input
+      placeholder={{t "ember-help-widget.help.search-placeholder"}}
+      @type="search"
+      @value={{this.searchQuery}}
+      @enter={{this.performSearch}} />
+    <p class="ember-help-widget-search-bar-caption">{{this.helpCenterLink}}</p>
+    {{#if this.searchResults}}
+      <h4>{{t "ember-help-widget.help.search-results"}}</h4>
+      <ol>
+        {{#each this.searchResults as |result|}}
+          <li><a href={{result.url}} target="_blank" rel="noopener noreferrer">{{result.text}}</a></li>
+        {{/each}}
+      </ol>
+    {{else if this.suggestions}}
+      <h4>{{t "ember-help-widget.help.suggestions"}}</h4>
+      <ol>
+        {{#each this.suggestions as |suggestion|}}
+        <li><a href={{suggestion.url}} target="_blank" rel="noopener noreferrer">{{suggestion.text}}</a></li>
+        {{/each}}
+      </ol>
+    {{else}}
+      <h4>{{t "ember-help-widget.help.no-results"}}</h4>
+    {{/if}}
+  </div>
+{{/if}}
