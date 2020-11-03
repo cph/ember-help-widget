@@ -20,7 +20,8 @@
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each"
+    "test:ember-compatibility": "ember try:each",
+    "test:ember-version": "ember try:one"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
