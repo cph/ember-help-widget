@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { resolve } from 'rsvp';
 import { task } from 'ember-concurrency-decorators';
+import autosize from 'autosize';
 
 export default class HelpWidgetFeedbackComponent extends Component {
   priorities = Object.freeze([ 'low', 'normal', 'high', 'urgent' ]);
@@ -45,6 +46,11 @@ export default class HelpWidgetFeedbackComponent extends Component {
   @action
   autofocus(el) {
     el.querySelector('textarea')?.focus();
+  }
+
+  @action
+  startAutosize(el) {
+    autosize(el.querySelectorAll('textarea'));
   }
 
   resetForm() {

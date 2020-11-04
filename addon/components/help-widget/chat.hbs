@@ -2,6 +2,7 @@
   <div
     class="ember-help-widget-zendesk-chat"
     {{did-insert this.connect}}
+    {{did-insert this.startAutosize}}
     {{did-update this.scrollToBottom this.zendeskChat.messages}}
     {{did-update this.syncComments this.zendeskChat.comments}}
   >
