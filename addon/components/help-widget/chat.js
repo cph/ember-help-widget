@@ -6,6 +6,7 @@ import { schedule } from '@ember/runloop';
 import { isBlank } from '@ember/utils';
 import { timeout } from 'ember-concurrency';
 import { restartableTask } from 'ember-concurrency-decorators';
+import autosize from 'autosize';
 
 const TYPING_TIMEOUT = 1000; // in ms
 const DEFAULT_FILE_TYPES = [
@@ -49,6 +50,11 @@ export default class HelpWidgetChatComponent extends Component {
         messageHistory.scrollTop = messageHistory.scrollHeight;
       }
     });
+  }
+
+  @action
+  startAutosize(el) {
+    autosize(el.querySelectorAll('textarea'));
   }
 
   @action

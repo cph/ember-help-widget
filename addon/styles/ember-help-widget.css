@@ -33,6 +33,11 @@
   width: 1em;
 }
 
+.ember-help-widget textarea,
+.ember-help-widget-chat-feedback-form {
+  resize: none;
+}
+
 .ember-help-widget-arrow {
   position: absolute;
   bottom: -10px;
@@ -240,6 +245,7 @@
   display: block;
   width: 100%;
   min-height: 8em;
+  max-height: 16em;
   margin-bottom: 6px;
 }
 
