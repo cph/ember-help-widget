@@ -1,3 +1,11 @@
 <h2 id="title">Welcome to Ember</h2>
 
 {{outlet}}
+
+<HelpWidget
+  @viewName="Sample Application"
+  @chatTags={{array "sample_chat"}}
+  @performSearch={{this.search}}
+  @fetchSuggestions={{this.suggestions}}
+  @sendFeedback={{this.feedback}}
+  />

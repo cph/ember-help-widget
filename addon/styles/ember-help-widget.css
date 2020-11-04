@@ -1,0 +1,520 @@
+:root {
+  --help-widget-activator-size: 3rem;
+  --help-widget-arrow-size: 12px;
+  --help-widget-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  --help-widget-icon-color: white;
+  --help-widget-activator-bg-closed: blue;
+  --help-widget-activator-bg-opened: gray;
+  --help-widget-z-index: 1050;
+  --help-widget-width: 380px;
+  --help-widget-border-radius: 4px;
+  --help-widget-header-padding: 1.33rem 2.33rem;
+  --help-widget-body-padding: 2rem 2.33rem;
+  --help-widget-bg: white;
+  --help-widget-body-bg: #EEE;
+  --help-widget-body-color: black;
+  --help-widget-control-color: #888;
+  --help-widget-chat-history-bg: white;
+  --help-widget-chat-bubble-bg: #CCC;
+  --help-widget-chat-visitor-bubble-bg: blue;
+  --help-widget-chat-visitor-bubble-color: white;
+  --help-widget-badge-size: 10px;
+  --help-widget-badge-color: red;
+}
+
+.ember-help-widget {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  color: var(--help-widget-body-color);
+}
+
+.ember-help-widget svg {
+  width: 1em;
+}
+
+.ember-help-widget-arrow {
+  position: absolute;
+  bottom: -10px;
+  margin-right: -4px;
+  right: calc(var(--help-widget-activator-size) * 0.5);
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.ember-help-widget-arrow::after {
+  content: '.';
+  color: transparent;
+  position: absolute;
+  width: var(--help-widget-arrow-size);
+  height: var(--help-widget-arrow-size);
+  background: var(--help-widget-body-bg);
+  transform: rotate(45deg);
+  top: calc(var(--help-widget-arrow-size) * -0.5);
+  left: var(--help-widget-arrow-size);
+  box-shadow: var(--help-widget-box-shadow);
+}
+
+.ember-help-widget-toggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  color: var(--help-widget-icon-color);
+  text-align: center;
+  width: var(--help-widget-activator-size);
+  height: var(--help-widget-activator-size);
+  border-radius: var(--help-widget-activator-size);
+  background-color: var(--help-widget-activator-bg-closed);
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+
+  box-shadow: -3px 0 3px rgba(0, 0, 0, 0.08), -1px 0 0 rgba(0, 0, 0, 0.05);
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ember-help-widget-toggle:active {
+  outline: none;
+}
+
+.ember-help-widget-toggle:focus {
+  outline: none;
+}
+
+.ember-help-widget-toggle .ember-help-widget-icon svg {
+  width: calc(var(--help-widget-activator-size) * 0.55);
+}
+
+.ember-help-widget-toggle .ember-help-widget-icon-close svg {
+  width: calc(var(--help-widget-activator-size) * 0.4);
+}
+
+.ember-help-widget-toggle .ember-help-widget-icon path {
+  fill: var(--help-widget-icon-color);
+}
+
+.ember-help-widget-toggle.ember-help-widget-badge {
+  @keyframes pulsing-toggle {
+    50% { filter: brightness(1.2); }
+  }
+
+  animation: pulsing-toggle 2s linear infinite;
+}
+
+.ember-help-widget-toggle.ember-help-widget-badge::after {
+  content: '.';
+  color: transparent;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--help-widget-badge-size);
+  height: var(--help-widget-badge-size);
+  border-radius: var(--help-widget-badge-size);
+  background: var(--help-widget-badge-color);
+  font-size: 0;
+  overflow: hidden;
+}
+
+.ember-help-widget.ember-help-widget-open {
+  z-index: var(--help-widget-z-index);
+}
+
+.ember-help-widget.ember-help-widget-open .ember-help-widget-toggle {
+  background-color: var(--help-widget-activator-bg-opened);
+}
+
+.ember-help-widget-container {
+  position: relative;
+  bottom: var(--help-widget-activator-size);
+  width: var(--help-widget-width);
+  overflow: visible;
+  margin-right: -8px;
+  border: 1px solid transparent;
+}
+
+.ember-help-widget-content {
+  margin: 8px 8px 20px;
+  background-color: var(--help-widget-bg);
+  box-shadow: var(--help-widget-box-shadow);
+  border-radius: var(--help-widget-border-radius);
+}
+
+.ember-help-widget-navigation {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.ember-help-widget-navigation.ember-help-showing-alt-contact {
+  justify-content: space-between;
+}
+
+.ember-help-widget-navigation span {
+  white-space: nowrap;
+}
+
+.ember-help-alt-contact-info {
+  font-size: 0.88em;
+}
+
+.ember-help-widget-header {
+  font-weight: 700;
+  padding: var(--help-widget-header-padding);
+  border-top-left-radius: var(--help-widget-border-radius);
+  border-top-right-radius: var(--help-widget-border-radius);
+}
+
+.ember-help-widget-body {
+  padding: var(--help-widget-body-padding);
+  background-color: var(--help-widget-body-bg);
+  border-bottom-left-radius: var(--help-widget-border-radius);
+  border-bottom-right-radius: var(--help-widget-border-radius);
+}
+
+.ember-help-widget-file-uploader input[type="file"] {
+  display: none;
+}
+
+.ember-help-widget-icon-spinner {
+  animation: icon-spin 1s infinite steps(8);
+}
+
+@keyframes icon-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+/* Help View */
+
+.ember-help-widget-content input[type="search"] {
+  display: block;
+  width: 100%;
+}
+
+.ember-help-widget-content h4 {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.125em;
+  font-weight: 700;
+  margin: 2em 0 1em;
+}
+
+.ember-help-widget-content ol {
+  margin: 0;
+  padding: 0;
+}
+
+.ember-help-widget-content ol li {
+  display: block;
+}
+
+.ember-help-widget-content ol li + li {
+  margin-top: 0.75rem;
+}
+
+
+.ember-help-widget-body .ember-help-widget-search-bar-caption {
+  font-size: 0.88em;
+  text-align: right;
+  margin-top: 0.3em;
+}
+
+/* Feedback View */
+
+.ember-help-widget-feedback-view input {
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.ember-help-widget-feedback-view textarea {
+  display: block;
+  width: 100%;
+  min-height: 8em;
+  margin-bottom: 6px;
+}
+
+.ember-help-widget-feedback-options {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ember-help-widget-feedback-options label {
+  margin: 0;
+}
+
+.ember-help-widget-feedback-options .ember-power-select-trigger {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 0;
+  width: 7em;
+}
+
+/* Chat View */
+.ember-help-widget-spacer,
+.ember-help-widget-chat-spacer {
+  flex-grow: 1;
+}
+
+.ember-help-widget-chat-controls {
+  display: flex;
+  flex-direction: row;
+  min-height: 1.6em;
+}
+
+.ember-help-widget-chat-controls label,
+.ember-help-widget-chat-controls button {
+  display: inline-block;
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: var(--help-widget-control-color);
+  line-height: 1;
+  font-size: inherit;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+.ember-help-widget-chat-controls label.ember-help-widget-active,
+.ember-help-widget-chat-controls button.ember-help-widget-active,
+.ember-help-widget-chat-controls label:hover,
+.ember-help-widget-chat-controls button:hover {
+  color: var(--help-widget-body-color);
+}
+
+.ember-help-widget-chat-history {
+  background-color: var(--help-widget-chat-history-bg);
+  border: 1px solid var(--help-widget-control-color);
+  border-bottom: none;
+  height: 12em;
+  padding-bottom: 1em;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.ember-help-widget-chat-history .ember-help-widget-chat-message {
+  padding: 0.25em;
+}
+
+.ember-help-widget-chat-history .ember-help-widget-chat-message:not(.ember-help-widget-chat-status) .ember-help-widget-chat-speaker {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.ember-help-widget-chat-history .ember-help-widget-chat-message:not(.ember-help-widget-chat-status) .ember-help-widget-chat-speaker img {
+  width: 1.67em;
+  height: 1.67em;
+  border-radius: 1.67em;
+  margin-right: 0.25em;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-speaker
+.ember-help-widget-chat-speaker-name {
+  flex-grow: 1;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-speaker
+.ember-help-widget-chat-speaker-name
+.ember-help-widget-chat-display-name {
+  font-size: 0.88em;
+  font-weight: bold;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-speaker
+.ember-help-widget-chat-speaker-name
+.ember-help-widget-chat-speaker-title {
+  font-size: 0.67em;
+  font-weight: bold;
+  color: var(--help-widget-control-color);
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-bubble-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-bubble-container
+.ember-help-widget-chat-bubble {
+  border-radius: 8px;
+  background-color: var(--help-widget-chat-bubble-bg);
+  color: var(--help-widget-body-color);
+  padding: 4px 8px;
+  overflow: hidden;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-bubble-container
+.ember-help-widget-chat-bubble.ember-help-widget-clear-bubble {
+  background-color: transparent;
+  border: 1px solid var(--help-widget-control-color);
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-bubble-container
+.ember-help-widget-chat-bubble.ember-help-widget-clear-bubble
+.ember-help-widget-chat-attachment-image {
+  display: block;
+  max-height: 8em;
+  border-bottom: 1px solid var(--help-widget-control-color);
+  margin: -4px 8px 0 -8px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message:not(.ember-help-widget-chat-status)
+.ember-help-widget-chat-bubble-container
+.ember-help-widget-chat-bubble.ember-help-widget-clear-bubble
+img {
+  max-width: 100%;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-visitor
+.ember-help-widget-chat-display-name,
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-visitor
+.ember-help-widget-chat-timestamp {
+  text-align: right;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-visitor
+.ember-help-widget-chat-bubble-container {
+  margin-left: 15%;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-visitor
+.ember-help-widget-chat-bubble-container
+.ember-help-widget-chat-bubble {
+  border-bottom-right-radius: 0;
+  background-color: var(--help-widget-chat-visitor-bubble-bg);
+  color: var(--help-widget-chat-visitor-bubble-color);
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-agent
+.ember-help-widget-chat-display-name,
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-agent
+.ember-help-widget-chat-timestamp {
+  text-align: left;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-agent
+.ember-help-widget-chat-bubble-container {
+  margin-right: 15%;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-agent
+.ember-help-widget-chat-bubble-container
+.ember-help-widget-chat-bubble {
+  border-bottom-left-radius: 0;
+}
+
+.ember-help-widget-chat-history
+.ember-help-widget-chat-message.ember-help-widget-chat-status {
+  width: 100%;
+  font-size: 0.88em;
+  color: var(--help-widget-control-color);
+  text-align: center;
+  padding: 0.5em 0.25em;
+}
+
+.ember-help-widget-chat-message-input {
+  display: flex;
+  flex-direction: row;
+}
+
+.ember-help-widget-chat-message-input textarea {
+  max-height: 4.5em;
+  flex-grow: 1;
+  border-color: var(--help-widget-control-color);
+}
+
+.ember-help-widget-chat-message-input textarea:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: var(--help-widget-control-color);
+}
+
+.ember-help-widget-chat-status-messages {
+  font-size: 0.88em;
+  color: var(--help-widget-control-color);
+}
+
+.ember-help-widget-chat-status-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.ember-help-widget-chat-status-buttons button,
+.ember-help-widget-chat-status-buttons textarea,
+.ember-help-widget-chat-status-buttons span {
+  flex-grow: 1;
+}
+
+.ember-help-widget-chat-status-buttons button.ember-help-widget-inactive {
+  color: var(--help-widget-control-color) !important;
+}
+
+.ember-help-widget-chat-status-buttons textarea {
+  border-color: var(--help-widget-control-color);
+  border-radius: 4px;
+  margin: 0.5em;
+}
+
+.ember-help-widget-chat-feedback-form {
+  width: calc(var(--help-widget-width) - 140px);
+  border-color: transparent;
+  margin: 0 0.5em;
+}
+
+.ember-help-widget-chat-feedback-form:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.ember-help-widget-feedback-form-container {
+  z-index: calc(var(--help-widget-z-index) + 10);
+}
+
+
+

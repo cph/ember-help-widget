@@ -1,0 +1,16 @@
+<label class="ember-help-widget-file-uploader {{if this.isUploading "ember-help-widget-disabled"}}">
+  <input
+    type="file"
+    disabled={{this.isUploading}}
+    accept={{@accept}}
+    {{on "change" this.selectNew}} >
+  {{#if (has-block)}}
+    {{yield (hash isUploading=this.isUploading)}}
+  {{else}}
+    {{#if this.isUploading}}
+      {{t "ember-help-widget.file.uploading"}}
+    {{else}}
+      {{t "ember-help-widget.file.upload"}}
+    {{/if}}
+  {{/if}}
+</label>

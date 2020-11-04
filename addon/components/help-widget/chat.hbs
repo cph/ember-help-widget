@@ -1,0 +1,81 @@
+{{#if @isShowing}}
+  <div
+    class="ember-help-widget-zendesk-chat"
+    {{did-insert this.connect}}
+    {{did-update this.scrollToBottom this.zendeskChat.messages}}
+    {{did-update this.syncComments this.zendeskChat.comments}}
+  >
+    <h3>{{t "ember-help-widget.chat.title"}}</h3>
+
+    <div class="ember-help-widget-chat-status-messages">
+      {{#if this.zendeskChat.agentTyping}}{{t "ember-help-widget.chat.typing" name=this.zendeskChat.agentTyping.displayName}}{{/if}}
+      {{#if (gt this.zendeskChat.queuePosition 0)}}{{t "ember-help-widget.chat.queued" position=this.zendeskChat.queuePosition}}{{/if}}
+      {{#unless this.zendeskChat.isOnline}}{{t "ember-help-widget.chat.offline"}}{{/unless}}
+    </div>
+
+    <div class="ember-help-widget-chat-history" {{on "scroll" this.onScroll passive=true}}>
+      {{#each this.zendeskChat.messages as |message|}}
+        <HelpWidget::Chat::Message @message={{message}} @onRate={{this.toggleRating}} @onFeedback={{this.updateFeedback}} />
+      {{/each}}
+    </div>
+
+    <div class="ember-help-widget-chat-message-input">
+      <Textarea
+        placeholder={{t "ember-help-widget.chat.message-placeholder"}}
+        @value={{this.tentativeMessage}}
+        @rows="1"
+        @disabled={{this.messageEditingDisabled}}
+        @key-down={{this.onKeydown}}
+        @enter={{this.sendMessage}} />
+    </div>
+
+    <div class="ember-help-widget-chat-controls">
+      {{#if this.zendeskChat.joinedChat}}
+        <button
+            type="button"
+            title={{t "ember-help-widget.chat.rate-good"}}
+            class={{if (eq this.zendeskChat.rating "good") "ember-help-widget-active" ""}}
+            {{on "click" (fn this.toggleRating "good")}}>
+          <HelpWidget::Icon @name="thumbs-up" />
+        </button>
+        <button
+            type="button"
+            title={{t "ember-help-widget.chat.rate-bad"}}
+            class={{if (eq this.zendeskChat.rating "bad") "ember-help-widget-active" ""}}
+            {{on "click" (fn this.toggleRating "bad")}}>
+          <HelpWidget::Icon @name="thumbs-down" />
+        </button>
+
+        {{#if (or this.zendeskChat.rating this.zendeskChat.comments)}}
+          {{#let (t (concat "ember-help-widget.chat." (if this.zendeskChat.comments "edit-feedback" "add-feedback"))) as |feedbackPrompt|}}
+            <BasicDropdown @onClose={{this.updateFeedbackFromTentative}} @registerAPI={{this.setFeedbackDropdownApi}} as |dd|>
+              <dd.Trigger><button class="ember-help-widget-chat-edit-feedback-trigger" type="button" title={{feedbackPrompt}}>{{feedbackPrompt}}</button></dd.Trigger>
+              <dd.Content class="ember-help-widget-feedback-form-container">
+                <Textarea
+                  class="ember-help-widget-chat-feedback-form"
+                  placeholder={{t "ember-help-widget.chat.feedback-placeholder"}}
+                  @value={{this.tentativeFeedback}}
+                  @enter={{this.closeFeedback}} />
+              </dd.Content>
+            </BasicDropdown>
+          {{/let}}
+        {{/if}}
+
+        <div class="ember-help-widget-spacer"></div>
+
+        <HelpWidget::Chat::Uploader @upload={{this.uploadFile}} @accept={{this.supportedFileTypes}} as |uploader|>
+          {{#if uploader.isUploading}}
+            <HelpWidget::Icon @name="spinner" title={{t "ember-help-widget.file.uploading"}} />
+          {{else}}
+            <HelpWidget::Icon @name="upload" title={{t "ember-help-widget.file.upload"}} />
+          {{/if}}
+        </HelpWidget::Chat::Uploader>
+
+        <button type="button" {{on "click" this.endChat}} title={{t "ember-help-widget.chat.leave"}} class="ember-help-widget-leave-chat-button">
+          <HelpWidget::Icon @name="sign-out" />
+        </button>
+      {{/if}}
+    </div>
+
+  </div>
+{{/if}}

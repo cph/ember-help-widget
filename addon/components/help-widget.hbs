@@ -1,0 +1,63 @@
+<div 
+  class="ember-help-widget {{if this.isOpen "ember-help-widget-open"}}"
+  ...attributes
+  {{did-insert this.connectChat}}
+  {{did-update this.updateChatInfo @currentUserName}}
+  {{did-update this.updateChatInfo @currentUserEmail}}
+>
+  {{#if this.isOpen}}
+    <div class="ember-help-widget-container">
+      <div class="ember-help-widget-content">
+        <div class="ember-help-widget-arrow"></div>
+        <div class="ember-help-widget-header">{{this.widgetHeader}}</div>
+        <div class="ember-help-widget-body">
+          <HelpWidget::Help
+            @isShowing={{this.showingHelp}}
+            @viewName={{@viewName}}
+            @performSearch={{@performSearch}}
+            @fetchSuggestions={{@fetchSuggestions}} />
+          <HelpWidget::Feedback
+            @isShowing={{this.showingFeedback}}
+            @sendFeedback={{@sendFeedback}} />
+          <HelpWidget::Chat
+            @isShowing={{this.showingChat}}
+            @back={{this.showHelp}}
+            @supportedFileTypes={{@chatSupportedFileTypes}} />
+
+          <div class="ember-help-widget-navigation {{if this.showingFeedback "ember-help-showing-alt-contact"}}">
+            {{#if this.showingHelp}}
+              {{#if this.isChatAvailable}}
+              <span>
+                <a href="#" {{on "click" this.showChat}}>
+                  {{#if this.inChat}}{{t "ember-help-widget.chat.link"}}{{else}}{{t "ember-help-widget.chat.link-start"}}{{/if}}
+                </a>
+                {{t "ember-help-widget.or"}}&nbsp;</span>
+              {{/if}}
+              <span><a href="#" {{on "click" this.showFeedback}}>{{t "ember-help-widget.feedback.link"}}</a></span>
+            {{/if}}
+
+            {{#if this.showingFeedback}}
+              <div class="ember-help-alt-contact-info">{{this.altContactMethods}}</div>
+            {{/if}}
+
+            {{#if (or this.showingFeedback this.showingChat)}}
+              <span><a href="#" {{on "click" this.showHelp}}>{{t "ember-help-widget.help.link" htmlSafe=true}}</a></span>
+            {{/if}}
+          </div>
+        </div>
+      </div> 
+    </div>
+  {{/if}}
+
+  <button
+    type="button"
+    class="ember-help-widget-toggle {{if this.showUnreadBadge "ember-help-widget-badge"}}"
+    {{on "click" this.toggleOpen}}
+  >
+    {{#if this.isOpen}}
+      <HelpWidget::Icon @name="close" />
+    {{else}}
+      <HelpWidget::Icon @name="info" />
+    {{/if}}
+  </button>
+</div>
