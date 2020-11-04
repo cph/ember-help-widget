@@ -28,13 +28,14 @@ export default class HelpWidgetHelpComponent extends Component {
   }
 
   @action
-  performSearch() { this.searchTask.perform(); }
+  updateQuery({ target }) { this.searchQuery = target.value; }
+
+  @action
+  onKeyup({ key }) { if (key === 'Enter') { this.searchTask.perform(); } }
 
   @action
   fetchSuggestions() { this.fetchSuggestionsTask.perform(); }
 
   @action
-  autofocus(el) {
-    el.querySelector('input[type="search"]')?.focus();
-  }
+  autofocus(el) { el.focus(); }
 }

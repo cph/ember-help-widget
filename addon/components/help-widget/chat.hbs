@@ -21,13 +21,13 @@
     </div>
 
     <div class="ember-help-widget-chat-message-input">
-      <Textarea
+      <textarea
         placeholder={{t "ember-help-widget.chat.message-placeholder"}}
-        @value={{this.tentativeMessage}}
-        @rows="1"
-        @disabled={{this.messageEditingDisabled}}
-        @key-down={{this.onKeydown}}
-        @enter={{this.sendMessage}} />
+        value={{this.tentativeMessage}}
+        rows="1"
+        disabled={{this.messageEditingDisabled}}
+        {{on "input" this.updateTentativeMessage}}
+        {{on "keydown" this.onKeydown}} />
     </div>
 
     <div class="ember-help-widget-chat-controls">

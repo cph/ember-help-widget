@@ -37,7 +37,6 @@ module('Integration | Component | help-widget/help', function(hooks) {
     });
     await render(hbs`<HelpWidget::Help @isShowing={{true}} @performSearch={{this.supplySearchResults}} />`);
     await fillIn('input[type="search"]', sampleQuery);
-    await triggerKeyEvent('input[type="search"]', 'keydown', 'Enter');
     await triggerKeyEvent('input[type="search"]', 'keyup', 'Enter');
     await waitFor('ol');
     assert.equal(find('ol').textContent.trim(), 'Result 1');

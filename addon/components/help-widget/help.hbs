@@ -2,14 +2,15 @@
   <div
     class="ember-help-widget-help-view"
     {{did-insert this.fetchSuggestions}}
-    {{did-insert this.autofocus}}
     {{did-update this.fetchSuggestions @viewName}}
   >
-    <Input
+    <input
       placeholder={{t "ember-help-widget.help.search-placeholder"}}
-      @type="search"
-      @value={{this.searchQuery}}
-      @enter={{this.performSearch}} />
+      type="search"
+      value={{this.searchQuery}}
+      {{did-insert this.autofocus}}
+      {{on "input" this.updateQuery}}
+      {{on "keyup" this.onKeyup}} />
     <p class="ember-help-widget-search-bar-caption">{{this.helpCenterLink}}</p>
     {{#if this.searchResults}}
       <h4>{{t "ember-help-widget.help.search-results"}}</h4>

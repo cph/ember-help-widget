@@ -60,7 +60,7 @@ module('Integration | Component | help-widget/chat', function(hooks) {
     }
     await render(hbs`<HelpWidget::Chat @isShowing={{true}} />`);
     await fillIn('.ember-help-widget-chat-message-input textarea', testMessage);
-    await triggerKeyEvent('.ember-help-widget-chat-message-input textarea', 'keyup', 'Enter');
+    await triggerKeyEvent('.ember-help-widget-chat-message-input textarea', 'keydown', 'Enter');
   });
 
   test('it prevents sending a message if offline', async function(assert) {

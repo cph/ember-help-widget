@@ -65,9 +65,18 @@ export default class HelpWidgetChatComponent extends Component {
   }
 
   @action
-  onKeydown(_text, e) {
+  updateTentativeMessage({ target }) {
+    this.tentativeMessage = target.value;
+  }
+
+  @action
+  onKeydown(e) {
     // Filter <Enter>s so we don't create superfluous line breaks
-    if (e.key === 'Enter') { e.preventDefault(); return false; }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.sendMessage();
+      return false;
+    }
     this.notifyOfTypingTask.perform();
     return true;
   }
