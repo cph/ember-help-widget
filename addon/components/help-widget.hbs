@@ -63,3 +63,7 @@
     {{/if}}
   </button>
 </div>
+{{!-- template-lint-disable no-invalid-interactive --}}
+{{#if this.isOpen}}
+  <div class="ember-help-widget-click-field" {{on "click" this.toggleOpen}}></div>
+{{/if}}

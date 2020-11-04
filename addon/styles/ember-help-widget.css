@@ -29,6 +29,15 @@
   color: var(--help-widget-body-color);
 }
 
+.ember-help-widget-click-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: calc(var(--help-widget-z-index) - 1);
+}
+
 .ember-help-widget svg {
   width: 1em;
 }
@@ -66,6 +75,7 @@
   bottom: 0;
   right: 0;
   display: block;
+  z-index: var(--help-widget-z-index);
   color: var(--help-widget-icon-color);
   text-align: center;
   width: var(--help-widget-activator-size);
