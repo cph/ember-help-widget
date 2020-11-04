@@ -3,6 +3,10 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { Views } from '../models/constants';
+import { parallel } from 'ember-animated';
+import move from 'ember-animated/motions/move';
+import { fadeIn, fadeOut } from 'ember-animated/motions/opacity';
+import { easeOut } from 'ember-animated/easings/cosine';
 
 export default class HelpWidgetComponent extends Component {
   @service zendeskChat;
@@ -27,6 +31,26 @@ export default class HelpWidgetComponent extends Component {
   get inChat() { return this.zendeskChat.joinedChat; }
   get hasUnreadMessages() { return this.zendeskChat.unreadMessagesCount > 0; }
   get showUnreadBadge() { return this.hasUnreadMessages && !this.isOpen; }
+
+  /* eslint-disable require-yield */
+  *transition({ insertedSprites, keptSprites, removedSprites }) {
+    for (const sprite of insertedSprites) {
+      const { y } = sprite.absoluteFinalBounds;
+      sprite.startAtPixel({ y: y + 16 });
+      parallel(move(sprite, { easing: easeOut }), fadeIn(sprite, { easing: easeOut }));
+    }
+
+    for (const sprite of keptSprites) {
+      move(sprite);
+    }
+
+    for (const sprite of removedSprites) {
+      const { y } = sprite.absoluteInitialBounds;
+      sprite.endAtPixel({ y: y + 16 });
+      parallel(move(sprite, { easing: easeOut }), fadeOut(sprite, { easing: easeOut }));
+    }
+  }
+  /* eslint-enable require-yield */
 
   @action toggleOpen() {
     this.isOpen = !this.isOpen;

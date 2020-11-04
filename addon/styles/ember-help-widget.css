@@ -138,8 +138,9 @@
 }
 
 .ember-help-widget-container {
-  position: relative;
+  position: absolute;
   bottom: var(--help-widget-activator-size);
+  right: 0px;
   width: var(--help-widget-width);
   overflow: visible;
   margin-right: -8px;
