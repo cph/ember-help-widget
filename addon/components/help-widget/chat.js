@@ -92,6 +92,7 @@ export default class HelpWidgetChatComponent extends Component {
   sendMessage() {
     if (this.messageEditingDisabled) { return; }
     if (isBlank(this.tentativeMessage)) { return; }
+    if (!this.zendeskChat.joinedChat) { this.zendeskChat.sendUserInfo(); }
     this.sendingMessage = true;
     this._setTyping(false);
     this.zendeskChat.send(this.tentativeMessage).then(() => {
