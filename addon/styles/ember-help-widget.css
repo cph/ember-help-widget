@@ -75,7 +75,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  display: block;
+  display: table;
   z-index: var(--help-widget-z-index);
   color: var(--help-widget-icon-color);
   text-align: center;
@@ -105,7 +105,13 @@
   outline: none;
 }
 
+.ember-help-widget-toggle .ember-help-widget-icon {
+  vertical-align: middle;
+}
+
 .ember-help-widget-toggle .ember-help-widget-icon svg {
+  display: table;
+  margin: 0 auto;
   width: calc(var(--help-widget-activator-size) * 0.55);
 }
 
