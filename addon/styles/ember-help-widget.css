@@ -27,6 +27,7 @@
   bottom: 1rem;
   right: 1rem;
   color: var(--help-widget-body-color);
+  z-index: var(--help-widget-z-index);
 }
 
 .ember-help-widget-click-field {
