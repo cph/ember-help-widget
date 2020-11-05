@@ -250,7 +250,7 @@ export default class ZendeskChatService extends Service {
   _observeRoute() {
     if (this.#observingRoute) { return; }
     this.#observingRoute = true;
-    this.router.on('routeDidChange', () => this.sendPathInfo());
+    this.router.on('routeDidChange', () => this._sendPathInfo());
   }
 
   _observeAgents() {
