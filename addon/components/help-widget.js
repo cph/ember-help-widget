@@ -26,6 +26,7 @@ export default class HelpWidgetComponent extends Component {
   get showingHelp() { return this.currentView === Views.HELP; }
   get showingFeedback() { return this.currentView === Views.FEEDBACK; }
   get showingChat() { return this.currentView === Views.CHAT; }
+  get showingShortcuts() { return this.currentView === Views.SHORTCUTS; }
 
   get isChatAvailable() { return this.zendeskChat.isOnline; }
   get inChat() { return this.zendeskChat.joinedChat; }
@@ -60,6 +61,7 @@ export default class HelpWidgetComponent extends Component {
   @action showHelp() { this.currentView = Views.HELP; }
   @action showFeedback() { this.currentView = Views.FEEDBACK; }
   @action showChat() { this.currentView = Views.CHAT; }
+  @action showShortcuts() { this.currentView = Views.SHORTCUTS; }
 
   @action connectChat() {
     // Have to go ahead and connect the chat in order to get

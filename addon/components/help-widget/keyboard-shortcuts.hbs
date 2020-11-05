@@ -1,0 +1,18 @@
+{{#if @isShowing}}
+<table class="ember-help-widget-shortcuts-container">
+  <tbody>
+    {{#each @shortcuts as |shortcut|}}
+      <tr class="ember-help-widget-shortcuts-row">
+        <td class="ember-help-widget-shortcuts-combos">
+          {{#each shortcut.combos as |combo|}}
+            <HelpWidget::KeyboardShortcuts::Combo @combo={{combo}} @combos={{shortcut.combos}} />
+          {{/each}}
+        </td>
+        <td class="ember-help-widget-shortcuts-action">
+          {{shortcut.action}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{/if}}

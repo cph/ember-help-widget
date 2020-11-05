@@ -1,0 +1,4 @@
+<span class="ember-help-widget-keyboard-combo">
+  {{#each @combo as |key|}}<kbd>{{key}}</kbd>{{/each}}
+</span>
+{{#if this.needsConnector}}<span> {{t "ember-help-widget.or"}} </span>{{/if}}

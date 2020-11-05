@@ -8,4 +8,8 @@
   @performSearch={{this.search}}
   @fetchSuggestions={{this.suggestions}}
   @sendFeedback={{this.feedback}}
+  @keyboardShortcuts={{array
+    (hash action="Do the thing" combos=(array (array "D")))
+    (hash action="Do the other thing" combos=(array (array "Cmd" "D") (array "Ctrl" "D")))
+  }}
   />
