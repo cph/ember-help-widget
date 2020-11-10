@@ -270,7 +270,6 @@ export default class ZendeskChatService extends Service {
     if (this.#observingChat) { return; }
     this.#observingChat = true;
     zChat.on('chat', update => {
-      console.log('[service:zendesk-chat] on chat, update: ', update);
       let msg, name, rating;
       switch (update.type) {
         case 'typing':
@@ -319,7 +318,7 @@ export default class ZendeskChatService extends Service {
           this.lastReadTimestamp = moment(update.timestamp);
           break;
         default:
-          console.log('[service:zendesk-chat] Received unhandled chat update:', update);
+          // console.log('[service:zendesk-chat] Received unhandled chat update:', update);
           break;
       }
     });
