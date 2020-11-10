@@ -49,7 +49,7 @@
 
         {{#if (or this.zendeskChat.rating this.zendeskChat.comments)}}
           {{#let (t (concat "ember-help-widget.chat." (if this.zendeskChat.comments "edit-feedback" "add-feedback"))) as |feedbackPrompt|}}
-            <BasicDropdown @onClose={{this.updateFeedbackFromTentative}} @registerAPI={{this.setFeedbackDropdownApi}} as |dd|>
+            <BasicDropdown @renderInPlace={{true}} @onClose={{this.updateFeedbackFromTentative}} @registerAPI={{this.setFeedbackDropdownApi}} as |dd|>
               <dd.Trigger><button class="ember-help-widget-chat-edit-feedback-trigger" type="button" title={{feedbackPrompt}}>{{feedbackPrompt}}</button></dd.Trigger>
               <dd.Content class="ember-help-widget-feedback-form-container">
                 <Textarea
