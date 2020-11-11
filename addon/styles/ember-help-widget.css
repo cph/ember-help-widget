@@ -123,12 +123,12 @@
   fill: var(--help-widget-icon-color);
 }
 
-.ember-help-widget-toggle.ember-help-widget-badge {
-  @keyframes pulsing-toggle {
-    50% { filter: brightness(1.2); }
-  }
+@keyframes ember-help-widget-pulsing-toggle {
+  50% { filter: brightness(1.2); }
+}
 
-  animation: pulsing-toggle 2s linear infinite;
+.ember-help-widget-toggle.ember-help-widget-badge {
+  animation: ember-help-widget-pulsing-toggle 2s linear infinite;
 }
 
 .ember-help-widget-toggle.ember-help-widget-badge::after {
@@ -209,10 +209,10 @@
 }
 
 .ember-help-widget-icon-spinner {
-  animation: icon-spin 1s infinite steps(8);
+  animation: ember-help-widget-icon-spin 1s infinite steps(8);
 }
 
-@keyframes icon-spin {
+@keyframes ember-help-widget-icon-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(359deg); }
 }
