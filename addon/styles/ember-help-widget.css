@@ -514,8 +514,10 @@ img {
   flex-grow: 1;
 }
 
+.ember-help-widget-chat-controls button.ember-help-widget-inactive,
 .ember-help-widget-chat-status-buttons button.ember-help-widget-inactive {
   color: var(--help-widget-control-color) !important;
+  fill: var(--help-widget-control-color) !important;
 }
 
 .ember-help-widget-chat-status-buttons textarea {

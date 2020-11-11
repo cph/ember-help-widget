@@ -35,14 +35,14 @@
         <button
             type="button"
             title={{t "ember-help-widget.chat.rate-good"}}
-            class={{if (eq this.zendeskChat.rating "good") "ember-help-widget-active" ""}}
+            class={{if (eq this.zendeskChat.rating "bad") "ember-help-widget-inactive"}}
             {{on "click" (fn this.toggleRating "good")}}>
           <HelpWidget::Icon @name="thumbs-up" />
         </button>
         <button
             type="button"
             title={{t "ember-help-widget.chat.rate-bad"}}
-            class={{if (eq this.zendeskChat.rating "bad") "ember-help-widget-active" ""}}
+            class={{if (eq this.zendeskChat.rating "good") "ember-help-widget-inactive"}}
             {{on "click" (fn this.toggleRating "bad")}}>
           <HelpWidget::Icon @name="thumbs-down" />
         </button>
