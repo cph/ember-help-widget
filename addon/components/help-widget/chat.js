@@ -141,8 +141,13 @@ export default class HelpWidgetChatComponent extends Component {
   }
 
   @action
-  closeFeedback() {
-    this.#feedbackDropdownApi?.actions?.close();
+  onFeedbackInput({ target }) {
+    this.tentativeFeedback = target.value;
+  }
+
+  @action
+  closeFeedbackOnEnter({ key }) {
+    if (key === 'Enter') { this.#feedbackDropdownApi?.actions?.close(); }
   }
 
   @restartableTask
