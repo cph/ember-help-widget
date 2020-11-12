@@ -3,8 +3,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, fillIn, find, findAll, render, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import Service from '@ember/service';
-import ChatMessage from 'ember-help-widget/models/chat-message';
-import ChatParticipant from 'ember-help-widget/models/chat-participant';
+import ChatMessage from '@cph/ember-help-widget/models/chat-message';
+import ChatParticipant from '@cph/ember-help-widget/models/chat-participant';
 import { resolve } from 'rsvp';
 
 class MockChat extends Service {

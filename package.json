@@ -1,11 +1,14 @@
 {
-  "name": "ember-help-widget",
-  "version": "0.0.0",
+  "name": "@cph/ember-help-widget",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cph/ember-help-widget.git"
+  },
   "license": "MIT",
   "author": "",
   "directories": {
@@ -73,5 +76,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
