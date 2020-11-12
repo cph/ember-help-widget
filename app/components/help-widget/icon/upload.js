@@ -1,1 +1,1 @@
-export { default } from 'ember-help-widget/components/help-widget/icon/upload';
+export { default } from '@cph/ember-help-widget/components/help-widget/icon/upload';

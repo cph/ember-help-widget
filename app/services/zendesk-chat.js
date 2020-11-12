@@ -1,1 +1,1 @@
-export { default } from 'ember-help-widget/services/zendesk-chat';
+export { default } from '@cph/ember-help-widget/services/zendesk-chat';
