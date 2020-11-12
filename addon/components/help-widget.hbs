@@ -24,24 +24,33 @@
               @isShowing={{this.showingChat}}
               @back={{this.showHelp}}
               @supportedFileTypes={{@chatSupportedFileTypes}} />
+            <HelpWidget::KeyboardShortcuts
+              @isShowing={{this.showingShortcuts}}
+              @shortcuts={{@keyboardShortcuts}} />
 
-            <div class="ember-help-widget-navigation {{if this.showingFeedback "ember-help-showing-alt-contact"}}">
+            <div class="ember-help-widget-navigation">
+              {{#if this.showingFeedback}}
+                <div class="ember-help-nav-left ember-help-alt-contact-info">{{this.altContactMethods}}</div>
+              {{else if (and @keyboardShortcuts (not this.showingShortcuts))}}
+                <div class="ember-help-nav-left">
+                  <a href="#" {{on "click" this.showShortcuts}}>{{t "ember-help-widget.shortcuts.link" htmlSafe=true}}</a>
+                </div>
+              {{else}}
+                <div class="ember-help-nav-left"></div>
+              {{/if}}
+
               {{#if this.showingHelp}}
                 {{#if this.isChatAvailable}}
                 <span>
                   <a href="#" {{on "click" this.showChat}}>
-                    {{#if this.inChat}}{{t "ember-help-widget.chat.link"}}{{else}}{{t "ember-help-widget.chat.link-start"}}{{/if}}
+                    {{#if this.inChat}}{{t "ember-help-widget.chat.link" htmlSafe=true}}{{else}}{{t "ember-help-widget.chat.link-start" htmlSafe=true}}{{/if}}
                   </a>
                   {{t "ember-help-widget.or"}}&nbsp;</span>
                 {{/if}}
-                <span><a href="#" {{on "click" this.showFeedback}}>{{t "ember-help-widget.feedback.link"}}</a></span>
+                <span><a href="#" {{on "click" this.showFeedback}}>{{t "ember-help-widget.feedback.link" htmlSafe=true}}</a></span>
               {{/if}}
 
-              {{#if this.showingFeedback}}
-                <div class="ember-help-alt-contact-info">{{this.altContactMethods}}</div>
-              {{/if}}
-
-              {{#if (or this.showingFeedback this.showingChat)}}
+              {{#if (or this.showingFeedback this.showingChat this.showingShortcuts)}}
                 <span><a href="#" {{on "click" this.showHelp}}>{{t "ember-help-widget.help.link" htmlSafe=true}}</a></span>
               {{/if}}
             </div>

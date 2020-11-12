@@ -44,6 +44,8 @@ ember-help-widget:
     edit-feedback: Edit feedback
     feedback-placeholder: Anything else you''d like to add?
     feedback-thanks: Thanks for the feedback
+  shortcuts:
+    link: Shortcuts
   file:
     upload: Upload
     uploading: Uploading...

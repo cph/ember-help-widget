@@ -20,6 +20,9 @@
   --help-widget-chat-visitor-bubble-color: white;
   --help-widget-badge-size: 10px;
   --help-widget-badge-color: red;
+  --help-widget-key-bg: #555;
+  --help-widget-key-color: white;
+  --help-widget-key-shadow: #333;
 }
 
 .ember-help-widget {
@@ -175,11 +178,11 @@
   margin-top: 2em;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
-.ember-help-widget-navigation.ember-help-showing-alt-contact {
-  justify-content: space-between;
+.ember-help-nav-left {
+  flex-grow: 1;
 }
 
 .ember-help-widget-navigation span {
@@ -287,6 +290,7 @@
 }
 
 /* Chat View */
+
 .ember-help-widget-spacer,
 .ember-help-widget-chat-spacer {
   flex-grow: 1;
@@ -542,5 +546,30 @@ img {
   z-index: calc(var(--help-widget-z-index) + 10);
 }
 
+/* Keyboard Shortcuts View */
 
+.ember-help-widget-shortcuts-container {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.ember-help-widget-shortcuts-container td {
+  padding: 0.25em;
+  vertical-align: top;
+}
+
+.ember-help-widget-shortcuts-container kbd {
+  position: relative;
+  display: inline-block;
+  margin: 0.25em 0.05em;
+  padding: 0.25em 0.5em;
+  background-color: var(--help-widget-key-bg);
+  color: var(--help-widget-key-color);
+  border-radius: 4px;
+  box-shadow: 0 4px var(--help-widget-key-shadow);
+}
+
+.ember-help-widget-keyboard-combo {
+  white-space: nowrap;
+}
 
