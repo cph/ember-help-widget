@@ -65,9 +65,18 @@ export default class HelpWidgetChatComponent extends Component {
   }
 
   @action
-  onKeydown(_text, e) {
+  updateTentativeMessage({ target }) {
+    this.tentativeMessage = target.value;
+  }
+
+  @action
+  onKeydown(e) {
     // Filter <Enter>s so we don't create superfluous line breaks
-    if (e.key === 'Enter') { e.preventDefault(); return false; }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.sendMessage();
+      return false;
+    }
     this.notifyOfTypingTask.perform();
     return true;
   }
@@ -83,6 +92,7 @@ export default class HelpWidgetChatComponent extends Component {
   sendMessage() {
     if (this.messageEditingDisabled) { return; }
     if (isBlank(this.tentativeMessage)) { return; }
+    if (!this.zendeskChat.joinedChat) { this.zendeskChat.sendUserInfo(); }
     this.sendingMessage = true;
     this._setTyping(false);
     this.zendeskChat.send(this.tentativeMessage).then(() => {
@@ -131,8 +141,13 @@ export default class HelpWidgetChatComponent extends Component {
   }
 
   @action
-  closeFeedback() {
-    this.#feedbackDropdownApi?.actions?.close();
+  onFeedbackInput({ target }) {
+    this.tentativeFeedback = target.value;
+  }
+
+  @action
+  closeFeedbackOnEnter({ key }) {
+    if (key === 'Enter') { this.#feedbackDropdownApi?.actions?.close(); }
   }
 
   @restartableTask

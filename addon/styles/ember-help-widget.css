@@ -27,6 +27,16 @@
   bottom: 1rem;
   right: 1rem;
   color: var(--help-widget-body-color);
+  z-index: var(--help-widget-z-index);
+}
+
+.ember-help-widget-click-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: calc(var(--help-widget-z-index) - 1);
 }
 
 .ember-help-widget svg {
@@ -65,7 +75,8 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  display: block;
+  display: table;
+  z-index: var(--help-widget-z-index);
   color: var(--help-widget-icon-color);
   text-align: center;
   width: var(--help-widget-activator-size);
@@ -94,7 +105,13 @@
   outline: none;
 }
 
+.ember-help-widget-toggle .ember-help-widget-icon {
+  vertical-align: middle;
+}
+
 .ember-help-widget-toggle .ember-help-widget-icon svg {
+  display: table;
+  margin: 0 auto;
   width: calc(var(--help-widget-activator-size) * 0.55);
 }
 
@@ -106,12 +123,12 @@
   fill: var(--help-widget-icon-color);
 }
 
-.ember-help-widget-toggle.ember-help-widget-badge {
-  @keyframes pulsing-toggle {
-    50% { filter: brightness(1.2); }
-  }
+@keyframes ember-help-widget-pulsing-toggle {
+  50% { filter: brightness(1.2); }
+}
 
-  animation: pulsing-toggle 2s linear infinite;
+.ember-help-widget-toggle.ember-help-widget-badge {
+  animation: ember-help-widget-pulsing-toggle 2s linear infinite;
 }
 
 .ember-help-widget-toggle.ember-help-widget-badge::after {
@@ -192,10 +209,10 @@
 }
 
 .ember-help-widget-icon-spinner {
-  animation: icon-spin 1s infinite steps(8);
+  animation: ember-help-widget-icon-spin 1s infinite steps(8);
 }
 
-@keyframes icon-spin {
+@keyframes ember-help-widget-icon-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(359deg); }
 }
@@ -497,8 +514,10 @@ img {
   flex-grow: 1;
 }
 
+.ember-help-widget-chat-controls button.ember-help-widget-inactive,
 .ember-help-widget-chat-status-buttons button.ember-help-widget-inactive {
   color: var(--help-widget-control-color) !important;
+  fill: var(--help-widget-control-color) !important;
 }
 
 .ember-help-widget-chat-status-buttons textarea {

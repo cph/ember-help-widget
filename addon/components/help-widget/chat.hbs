@@ -21,13 +21,13 @@
     </div>
 
     <div class="ember-help-widget-chat-message-input">
-      <Textarea
+      <textarea
         placeholder={{t "ember-help-widget.chat.message-placeholder"}}
-        @value={{this.tentativeMessage}}
-        @rows="1"
-        @disabled={{this.messageEditingDisabled}}
-        @key-down={{this.onKeydown}}
-        @enter={{this.sendMessage}} />
+        value={{this.tentativeMessage}}
+        rows="1"
+        disabled={{this.messageEditingDisabled}}
+        {{on "input" this.updateTentativeMessage}}
+        {{on "keydown" this.onKeydown}} />
     </div>
 
     <div class="ember-help-widget-chat-controls">
@@ -35,28 +35,29 @@
         <button
             type="button"
             title={{t "ember-help-widget.chat.rate-good"}}
-            class={{if (eq this.zendeskChat.rating "good") "ember-help-widget-active" ""}}
+            class={{if (eq this.zendeskChat.rating "bad") "ember-help-widget-inactive"}}
             {{on "click" (fn this.toggleRating "good")}}>
           <HelpWidget::Icon @name="thumbs-up" />
         </button>
         <button
             type="button"
             title={{t "ember-help-widget.chat.rate-bad"}}
-            class={{if (eq this.zendeskChat.rating "bad") "ember-help-widget-active" ""}}
+            class={{if (eq this.zendeskChat.rating "good") "ember-help-widget-inactive"}}
             {{on "click" (fn this.toggleRating "bad")}}>
           <HelpWidget::Icon @name="thumbs-down" />
         </button>
 
         {{#if (or this.zendeskChat.rating this.zendeskChat.comments)}}
           {{#let (t (concat "ember-help-widget.chat." (if this.zendeskChat.comments "edit-feedback" "add-feedback"))) as |feedbackPrompt|}}
-            <BasicDropdown @onClose={{this.updateFeedbackFromTentative}} @registerAPI={{this.setFeedbackDropdownApi}} as |dd|>
+            <BasicDropdown @renderInPlace={{true}} @onClose={{this.updateFeedbackFromTentative}} @registerAPI={{this.setFeedbackDropdownApi}} as |dd|>
               <dd.Trigger><button class="ember-help-widget-chat-edit-feedback-trigger" type="button" title={{feedbackPrompt}}>{{feedbackPrompt}}</button></dd.Trigger>
               <dd.Content class="ember-help-widget-feedback-form-container">
-                <Textarea
+                <textarea
                   class="ember-help-widget-chat-feedback-form"
                   placeholder={{t "ember-help-widget.chat.feedback-placeholder"}}
-                  @value={{this.tentativeFeedback}}
-                  @enter={{this.closeFeedback}} />
+                  value={{this.tentativeFeedback}}
+                  {{on "input" this.onFeedbackInput}}
+                  {{on "keydown" this.closeFeedbackOnEnter}} />
               </dd.Content>
             </BasicDropdown>
           {{/let}}
