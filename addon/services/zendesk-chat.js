@@ -207,7 +207,7 @@ export default class ZendeskChatService extends Service {
 
   _sendUserIdentifcation() {
     return new EmberPromise((resolve, reject) => {
-      if (!this.isConnected) { return reject(); }
+      if (!this.isConnected) { return resolve(); }
       zChat.setVisitorInfo({
         display_name: this.currentUserName,
         email: this.currentUserEmail
