@@ -3,6 +3,8 @@ ember-help-widget:
   default-header: Help center
   help-center-url: https://google.com
   contact-phone-number: (555) 555-5555
+  toggle-open: Open
+  toggle-close: Close
   help:
     link: "&#8249; Back"
     search-placeholder: Search help articles

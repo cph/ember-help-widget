@@ -64,6 +64,7 @@
   <button
     type="button"
     class="ember-help-widget-toggle {{if this.showUnreadBadge "ember-help-widget-badge"}}"
+    aria-label={{if this.isOpen (t "ember-help-widget.toggle-close") (t "ember-help-widget.toggle-open")}}
     {{on "click" this.toggleOpen}}
   >
     {{#if this.isOpen}}
