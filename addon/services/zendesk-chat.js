@@ -13,6 +13,7 @@ export default class ZendeskChatService extends Service {
 
   @tracked currentUserName = null;
   @tracked currentUserEmail = null;
+  @tracked departmentId = null;
   @tracked chatTags = [];
 
   @tracked _connectionStatus = 'closed';
@@ -199,13 +200,28 @@ export default class ZendeskChatService extends Service {
 
 
 
-  sendUserInfo() {
+  async sendUserInfo() {
+    await this._sendDepartment();
+    await this._sendUserIdentifcation();
+  }
+
+  _sendUserIdentifcation() {
     return new EmberPromise((resolve, reject) => {
       if (!this.isConnected) { return reject(); }
       zChat.setVisitorInfo({
         display_name: this.currentUserName,
         email: this.currentUserEmail
       }, err => { if (err) { reject(err); } else { resolve(); } });
+    });
+  }
+
+  _sendDepartment() {
+    return new EmberPromise((resolve, reject) => {
+      if (!this.isConnected) { return reject(); }
+      if (!this.departmentId) { return resolve(); }
+      zChat.setVisitorDefaultDepartment(
+        this.departmentId,
+        err => { if (err) { reject(err); } else { resolve(); } });
     });
   }
 

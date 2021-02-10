@@ -73,6 +73,7 @@ export default class HelpWidgetComponent extends Component {
 
   @action
   updateChatInfo() {
+    this.zendeskChat.departmentId = this.args.departmentId;
     this.zendeskChat.currentUserName = this.args.currentUserName;
     this.zendeskChat.currentUserEmail = this.args.currentUserEmail;
     this.zendeskChat.sendUserInfo();

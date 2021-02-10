@@ -2,6 +2,7 @@
   class="ember-help-widget {{if this.isOpen "ember-help-widget-open"}}"
   ...attributes
   {{did-insert this.connectChat}}
+  {{did-update this.updateChatInfo @departmentId}}
   {{did-update this.updateChatInfo @currentUserName}}
   {{did-update this.updateChatInfo @currentUserEmail}}
 >
