@@ -217,7 +217,7 @@ export default class ZendeskChatService extends Service {
 
   _sendDepartment() {
     return new EmberPromise((resolve, reject) => {
-      if (!this.isConnected) { return reject(); }
+      if (!this.isConnected) { return resolve(); }
       if (!this.departmentId) { return resolve(); }
       zChat.setVisitorDefaultDepartment(
         this.departmentId,
