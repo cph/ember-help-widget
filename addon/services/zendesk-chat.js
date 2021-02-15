@@ -3,8 +3,8 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import ChatMessage from '../models/chat-message';
-import ChatParticipant from '../models/chat-participant';
+import ChatMessage from '@cph/ember-help-widget/models/chat-message';
+import ChatParticipant from '@cph/ember-help-widget/models/chat-participant';
 import { Promise as EmberPromise } from 'rsvp';
 import moment from 'moment';
 
