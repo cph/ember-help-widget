@@ -1,3 +1,5 @@
+/* globals zChat */
+
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
@@ -5,7 +7,6 @@ import ChatMessage from '../models/chat-message';
 import ChatParticipant from '../models/chat-participant';
 import { Promise as EmberPromise } from 'rsvp';
 import moment from 'moment';
-import zChat from 'zendesk-chat-sdk';
 
 export default class ZendeskChatService extends Service {
   @service router;
