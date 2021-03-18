@@ -26,6 +26,9 @@
     "test:ember-compatibility": "ember try:each",
     "test:ember-version": "ember try:one"
   },
+  "resolutions": {
+    "ember-cli-babel": "^7.22.1 <7.24.0"
+  },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
     "@glimmer/tracking": "^1.0.2",
