@@ -1,6 +1,6 @@
 {
   "name": "@cph/ember-help-widget",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -25,6 +25,9 @@
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
     "test:ember-version": "ember try:one"
+  },
+  "resolutions": {
+    "ember-cli-babel": "^7.22.1 <7.24.0"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
