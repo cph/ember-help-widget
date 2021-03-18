@@ -312,6 +312,7 @@
   background: transparent;
   cursor: pointer;
   color: var(--help-widget-control-color);
+  fill: var(--help-widget-control-color);
   line-height: 1;
   font-size: inherit;
   padding: 0.2em 0.4em;
@@ -325,6 +326,7 @@
 .ember-help-widget-chat-controls label:hover,
 .ember-help-widget-chat-controls button:hover {
   color: var(--help-widget-body-color);
+  fill: var(--help-widget-body-color);
 }
 
 .ember-help-widget-chat-history {
