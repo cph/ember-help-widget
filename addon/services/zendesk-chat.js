@@ -60,12 +60,12 @@ export default class ZendeskChatService extends Service {
   }
 
   connect({ zendeskChatKey }) {
+    if (!zChat) { return; }
+
     this._observeConnection();
     this._observeAccount();
     this._observeRoute();
     this._observeChat();
-
-    if (!zChat) { return; }
 
     if (!this.#initialized) {
       this.#initialized = true;
