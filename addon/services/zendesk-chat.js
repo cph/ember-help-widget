@@ -1,5 +1,3 @@
-/* globals zChat */
-
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
@@ -7,6 +5,11 @@ import ChatMessage from '@cph/ember-help-widget/models/chat-message';
 import ChatParticipant from '@cph/ember-help-widget/models/chat-participant';
 import { Promise as EmberPromise } from 'rsvp';
 import moment from 'moment';
+
+// Just `zChat` raises a ReferenceError because the variable
+// can't be found if it's not loaded; `window.zChat` just
+// returns `undefined`, which we can check for.
+const zChat = window.zChat;
 
 export default class ZendeskChatService extends Service {
   @service router;
