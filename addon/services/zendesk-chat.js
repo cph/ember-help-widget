@@ -65,6 +65,8 @@ export default class ZendeskChatService extends Service {
     this._observeRoute();
     this._observeChat();
 
+    if (!zChat) { return; }
+
     if (!this.#initialized) {
       this.#initialized = true;
       zChat.init({
@@ -165,7 +167,7 @@ export default class ZendeskChatService extends Service {
 
   getHours() {
     return new EmberPromise((resolve, reject) => {
-      const hours = zChat.getOperatingHours();
+      const hours = zChat && zChat.getOperatingHours();
       if (hours === undefined) {
         reject();
       } else {
@@ -229,11 +231,13 @@ export default class ZendeskChatService extends Service {
   _sendPathInfo() {
     const url = window.location.href,
           title = window.document.title;
-    zChat.sendVisitorPath({ title, url });
+    zChat && zChat.sendVisitorPath({ title, url });
   }
 
   _addTags() {
     return new EmberPromise((resolve, reject) => {
+      if (!zChat) { return resolve(); }
+
       zChat.addTags(this.chatTags, err => {
         if (err) { reject(err); } else { resolve(); }
       });
