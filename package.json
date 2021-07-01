@@ -30,7 +30,8 @@
     "ember-cli-babel": "^7.22.1 <7.24.0",
     "printf": "^0.6.1",
     "ssri": "^8.0.1",
-    "normalize-url": "^4.5"
+    "normalize-url": "^4.5",
+    "glob-parent": "^5.1.2"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
