@@ -43,6 +43,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         scenario:
           - 'ember-lts-3.20'
