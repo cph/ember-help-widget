@@ -36,6 +36,7 @@ of parameters:
 * `@currentUserName` - The name of the current user. This is primarily used to auto-populate the info into chat sessions.
 * `@currentUserEmail` - The email of the current user. As above, this is primarily for auto-populating into chat sessions.
 * `@keyboardShortcuts` - Optional. An array of objects representing keyboard shortcuts for the current view. Each shortcut object should have an `action`, which describes the action the shortcut will take, as well as a `combos` array, each of which is itself an array of string representing the keys comprising the keyboard shortcut's chord. `combos` is an array, as you could have multiple chords that invoke the same action.
+* `@helpCenterUrlKey` - Optional.  Defaults to `help-center-url`.  The key must be defined under `ember-help-widget`.
 
 The addon leverages `ember-intl` for internationalization of all strings, which
 can be overridden by translations for the consuming app. Of particular note are a

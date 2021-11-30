@@ -11,7 +11,7 @@
       {{did-insert this.autofocus}}
       {{on "input" this.updateQuery}}
       {{on "keyup" this.onKeyup}} />
-    <p class="ember-help-widget-search-bar-caption">{{this.helpCenterLink}}</p>
+    <p class="ember-help-widget-search-bar-caption" data-test-help-center-link>{{this.helpCenterLink}}</p>
     {{#if this.searchResults}}
       <h4>{{t "ember-help-widget.help.search-results"}}</h4>
       <ol>
