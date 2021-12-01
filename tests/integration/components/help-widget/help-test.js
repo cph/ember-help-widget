@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { fillIn, find, render, triggerKeyEvent, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { resolve } from 'rsvp';
+import { t } from 'ember-intl/test-support';
 
 module('Integration | Component | help-widget/help', function(hooks) {
   setupRenderingTest(hooks);
@@ -40,5 +41,19 @@ module('Integration | Component | help-widget/help', function(hooks) {
     await triggerKeyEvent('input[type="search"]', 'keyup', 'Enter');
     await waitFor('ol');
     assert.equal(find('ol').textContent.trim(), 'Result 1');
+  });
+
+  test('it renders the help center link in the key ember-help-center.help-center-url', async function(assert) {
+    await render(hbs`<HelpWidget::Help @isShowing={{true}} />`);
+    const linkElement = find('[data-test-help-center-link] a');
+    assert.ok(linkElement);
+    assert.ok(linkElement.getAttribute('href').includes(t('ember-help-widget.help-center-url')));
+  });
+
+  test('it renders the help center link in the key provided via helpCenterUrlKey argument', async function(assert) {
+    await render(hbs`<HelpWidget::Help @isShowing={{true}} @helpCenterUrlKey={{'alt-help-center-url'}} />`);
+    const linkElement = find('[data-test-help-center-link] a');
+    assert.ok(linkElement);
+    assert.ok(linkElement.getAttribute('href').includes(t('ember-help-widget.alt-help-center-url')));
   });
 });

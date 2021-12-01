@@ -2,6 +2,7 @@ ember-help-widget:
   or: or
   default-header: Help center
   help-center-url: https://google.com
+  alt-help-center-url: https://bing.com
   contact-phone-number: (555) 555-5555
   toggle-open: Open
   toggle-close: Close

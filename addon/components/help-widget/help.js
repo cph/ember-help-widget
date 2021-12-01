@@ -13,7 +13,8 @@ export default class HelpWidgetHelpComponent extends Component {
   @tracked suggestions = [];
 
   get helpCenterLink() {
-    const url = this.intl.t('ember-help-widget.help-center-url');
+    const helpUrlkey = this.args?.helpCenterUrlKey || 'help-center-url';
+    const url = this.intl.t('ember-help-widget.'.concat(helpUrlkey));
     return this.intl.t('ember-help-widget.help.help-center', { url, htmlSafe: true });
   }
 
