@@ -1,4 +1,4 @@
-<div 
+<div
   class="ember-help-widget {{if this.isOpen "ember-help-widget-open"}}"
   ...attributes
   {{did-insert this.connectChat}}
@@ -17,7 +17,8 @@
               @isShowing={{this.showingHelp}}
               @viewName={{@viewName}}
               @performSearch={{@performSearch}}
-              @fetchSuggestions={{@fetchSuggestions}} />
+              @fetchSuggestions={{@fetchSuggestions}}
+              @helpCenterUrlKey={{@helpCenterUrlKey}} />
             <HelpWidget::Feedback
               @isShowing={{this.showingFeedback}}
               @sendFeedback={{@sendFeedback}} />
@@ -56,7 +57,7 @@
               {{/if}}
             </div>
           </div>
-        </div> 
+        </div>
       </div>
     {{/animated-if}}
   </AnimatedContainer>
