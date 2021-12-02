@@ -31,6 +31,7 @@
     "ansi-regex": "^5.0.1",
     "ember-cli-babel": "^7.22.1 <7.24.0",
     "glob-parent": "^5.1.2",
+    "json-schema": "^0.4.0",
     "normalize-url": "^4.5",
     "printf": "^0.6.1",
     "set-value": "^4.0.1",
