@@ -36,7 +36,7 @@
     "printf": "^0.6.1",
     "set-value": "^4.0.1",
     "ssri": "^8.0.1",
-    "xmldom": "github:xmldom/xmldom#0.7.0"
+    "xmldom": "github:xmldom/xmldom#0.7.5"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
