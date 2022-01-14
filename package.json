@@ -1,6 +1,6 @@
 {
   "name": "@cph/ember-help-widget",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -31,6 +31,7 @@
     "ansi-regex": "^5.0.1",
     "clean-css": "^4.1.11",
     "ember-cli-babel": "^7.22.1 <7.24.0",
+    "follow-redirects": "^1.14.7",
     "glob-parent": "^5.1.2",
     "json-schema": "^0.4.0",
     "normalize-url": "^4.5",
