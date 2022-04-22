@@ -29,6 +29,7 @@
   "resolutions": {
     "ansi-html": "mahdyar/ansi-html-community#v0.0.8",
     "ansi-regex": "^5.0.1",
+    "async": "^2.6.4",
     "clean-css": "^4.1.11",
     "ember-cli-babel": "^7.22.1 <7.24.0",
     "follow-redirects": "^1.14.7",
