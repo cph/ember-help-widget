@@ -29,9 +29,9 @@
               class="ember-help-widget-chat-feedback-form"
               placeholder={{t "ember-help-widget.chat.feedback-placeholder"}}
               @value={{this.tentativeFeedback}}
-              @disabled={{not this.zendeskChat.isOnline}}
+              disabled={{not this.zendeskChat.isOnline}}
               @enter={{this.submitFeedback}}
-              @change={{this.submitFeedback}} />
+              {{on "change" this.submitFeedback}} />
           </div>
         {{/if}}
       {{/if}}
