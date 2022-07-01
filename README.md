@@ -7,9 +7,11 @@ It's the Help Widget from LSB -- chat and all -- extracted in a reusable addon.
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.16 or above
-* Ember CLI v2.13 or above
-* Node.js v10 or above
+* Ember.js v3.28 or above
+* Ember CLI v3.28 or above
+* Node.js v16 or above
+
+**NOTE:** Version 0.2.0 is a breaking change due to ember-auto-import moving to version 2.x from 1.x
 
 
 Installation
