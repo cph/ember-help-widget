@@ -42,7 +42,8 @@
     "set-value": "^4.0.1",
     "ssri": "^8.0.1",
     "xmldom": "github:xmldom/xmldom#0.7.5",
-    "ember-style-modifier": "^0.8.0"
+    "ember-style-modifier": "^0.8.0",
+    "json5": "^2.2.3"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
