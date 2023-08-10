@@ -1,6 +1,6 @@
 {
   "name": "@cph/ember-help-widget",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -50,7 +50,7 @@
   "dependencies": {
     "@glimmer/component": "^1.0.2",
     "@glimmer/tracking": "^1.0.2",
-    "autosize": "^4.0.4",
+    "autosize": "^6.0.1",
     "ember-animated": "^1.0.4",
     "ember-auto-import": "^2.4.2",
     "ember-cli-babel": "^7.26.11",
