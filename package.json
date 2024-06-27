@@ -30,6 +30,7 @@
     "ansi-html": "mahdyar/ansi-html-community#v0.0.8",
     "ansi-regex": "^5.0.1",
     "async": "^2.6.4",
+    "braces": "^3.0.3",
     "clean-css": "^4.1.11",
     "ember-source-channel-url": "^3.0.0",
     "cacheable-request": "^10.2.7",
@@ -45,7 +46,8 @@
     "ssri": "^8.0.1",
     "xmldom": "github:xmldom/xmldom#0.7.5",
     "ember-style-modifier": "^0.8.0",
-    "json5": "^2.2.3"
+    "json5": "^2.2.3",
+    "ws": "^8.17.1"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.2",
