@@ -1,5 +1,5 @@
 name: Tests
-on: [ push ]
+on: [push]
 
 env:
   NODE_VERSION: 16
@@ -24,7 +24,7 @@ jobs:
 
       - name: Cache dependencies
         id: cache-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -46,11 +46,11 @@ jobs:
       fail-fast: false
       matrix:
         scenario:
-          - 'ember-lts-3.24'
-          - 'ember-lts-3.28'
-          - 'ember-release'
-          - 'ember-beta'
-          - 'ember-canary'
+          - "ember-lts-3.24"
+          - "ember-lts-3.28"
+          - "ember-release"
+          - "ember-beta"
+          - "ember-canary"
     timeout-minutes: 7
     steps:
       - name: Check out repo
@@ -67,7 +67,7 @@ jobs:
 
       - name: Cache dependencies
         id: cache-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
