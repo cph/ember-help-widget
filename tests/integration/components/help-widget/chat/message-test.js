@@ -6,6 +6,7 @@ import Service from '@ember/service';
 import ChatMessage from '@cph/ember-help-widget/models/chat-message';
 import ChatParticipant from '@cph/ember-help-widget/models/chat-participant';
 import moment from 'moment';
+import { setupIntl } from 'ember-intl/test-support';
 
 class MockChat extends Service {
   messages = [];
@@ -19,6 +20,7 @@ let agent;
 
 module('Integration | Component | help-widget/chat/message', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function() {
     this.owner.unregister('service:zendesk-chat');

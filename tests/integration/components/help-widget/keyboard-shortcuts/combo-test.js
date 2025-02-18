@@ -2,11 +2,13 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 
 const combos = [[ 'Ctrl', 'F' ], [ 'Shift', 'Ctrl', 'F' ]];
 
 module('Integration | Component | help-widget/keyboard-shortcuts/combo', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it renders the passed in combo', async function(assert) {
     this.set('testCombos', [ combos[0] ]);

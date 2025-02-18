@@ -4,9 +4,11 @@ import { fillIn, find, render, triggerKeyEvent, waitFor } from '@ember/test-help
 import { hbs } from 'ember-cli-htmlbars';
 import { resolve } from 'rsvp';
 import { t } from 'ember-intl/test-support';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | help-widget/help', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it does not render anything unless it is showing', async function(assert) {
     await render(hbs`<HelpWidget::Help />`);

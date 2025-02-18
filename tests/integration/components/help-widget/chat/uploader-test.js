@@ -2,9 +2,11 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, triggerEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | help-widget/chat/uploader', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it renders a default label without a block', async function(assert) {
     await render(hbs`<HelpWidget::Chat::Uploader />`);
