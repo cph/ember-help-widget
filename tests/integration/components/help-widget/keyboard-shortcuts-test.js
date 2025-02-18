@@ -2,9 +2,11 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { findAll, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | help-widget/keyboard-shortcuts', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it renders a row for each shortcut', async function(assert) {
     this.set('testShortcuts', [

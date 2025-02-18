@@ -4,6 +4,7 @@ import { click, find, render } from '@ember/test-helpers';
 import { animationsSettled } from 'ember-animated/test-support';
 import { hbs } from 'ember-cli-htmlbars';
 import Service from '@ember/service';
+import { setupIntl } from 'ember-intl/test-support';
 
 class MockChat extends Service {
   connect() { }
@@ -14,6 +15,7 @@ let mockChat;
 
 module('Integration | Component | help-widget', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function() {
     this.owner.unregister('service:zendesk-chat');

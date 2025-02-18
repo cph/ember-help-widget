@@ -4,9 +4,11 @@ import { click, fillIn, find, render } from '@ember/test-helpers';
 import { selectChoose } from 'ember-power-select/test-support/helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { resolve } from 'rsvp';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | help-widget/feedback', function(hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it does not render if isShowing is false', async function(assert) {
     await render(hbs`<HelpWidget::Feedback />`);
