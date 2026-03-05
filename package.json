@@ -44,6 +44,7 @@
     "package-json": "^7.0.0",
     "printf": "^0.6.1",
     "semver": "^7.5.2",
+    "serialize-javascript": "^7.0.3",
     "set-value": "^4.0.1",
     "ssri": "^8.0.1",
     "tmp": "^0.2.4",
