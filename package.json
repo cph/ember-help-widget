@@ -35,6 +35,7 @@
     "clean-css": "^4.1.11",
     "ember-source-channel-url": "^3.0.0",
     "ember-style-modifier": "^0.8.0",
+    "flatted": "^3.4.0",
     "follow-redirects": "^1.14.7",
     "glob-parent": "^5.1.2",
     "json5": "^2.2.3",
