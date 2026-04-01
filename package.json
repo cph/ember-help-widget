@@ -48,7 +48,6 @@
     "set-value": "^4.0.1",
     "ssri": "^8.0.1",
     "tmp": "^0.2.4",
-    "xmldom": "github:xmldom/xmldom#0.7.5",
     "ws": "^8.17.1"
   },
   "dependencies": {
