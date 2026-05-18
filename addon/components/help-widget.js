@@ -53,15 +53,17 @@ export default class HelpWidgetComponent extends Component {
   }
   /* eslint-enable require-yield */
 
-  @action toggleOpen() {
+  @action toggleOpen(e) {
+    e?.preventDefault();
+
     this.isOpen = !this.isOpen;
     if (this.isOpen) { this.resetView(); }
   }
 
-  @action showHelp() { this.currentView = Views.HELP; }
-  @action showFeedback() { this.currentView = Views.FEEDBACK; }
-  @action showChat() { this.currentView = Views.CHAT; }
-  @action showShortcuts() { this.currentView = Views.SHORTCUTS; }
+  @action showHelp(e) { e?.preventDefault(); this.currentView = Views.HELP; }
+  @action showFeedback(e) { e?.preventDefault(); this.currentView = Views.FEEDBACK; }
+  @action showChat(e) { e?.preventDefault(); this.currentView = Views.CHAT; }
+  @action showShortcuts(e) { e?.preventDefault(); this.currentView = Views.SHORTCUTS; }
 
   @action connectChat() {
     // Have to go ahead and connect the chat in order to get
