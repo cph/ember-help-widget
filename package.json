@@ -39,6 +39,7 @@
     "glob-parent": "^5.1.2",
     "json5": "^2.2.3",
     "json-schema": "^0.4.0",
+    "linkify-it": "^5.0.1",
     "minimist": "^1.2.6",
     "normalize-url": "^4.5",
     "package-json": "^7.0.0",
